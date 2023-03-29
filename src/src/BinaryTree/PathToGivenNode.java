@@ -5,18 +5,6 @@ import java.util.Queue;
 import java.io.*;
 import java.util.*;
 
-class Node {
-    int data;
-    Node left;
-    Node right;
-
-    Node(int data) {
-        this.data = data;
-        left = null;
-        right = null;
-    }
-}
-
 
 public class PathToGivenNode {
     static Node buildTree(String str) {
