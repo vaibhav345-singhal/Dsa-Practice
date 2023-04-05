@@ -33,6 +33,43 @@ class Solution {
         }
         return true;
     }
+
+    // this will work for all positive and negative numbers
+    public boolean arrayPairBetter(int[] arr, int k){
+
+        HashMap<Integer,Integer> map = new HashMap<>();
+
+        for(int num : arr){
+            int rem = num %k;
+
+            // for negative 
+            if(rem <0) rem+=k;
+
+            map.put(rem,map.getOrDefault(rem,0)+1);
+        }
+
+
+        for(int num : arr){
+            int rem = num %k;
+
+            if(rem == 0){ // if rem is zero than it should be even to make pair
+                int freq = map.get(0);
+                if(freq % 2 != 0) return false;
+            }
+            else if(2*rem == k){
+                    // dont use k/2 because it will work only if num%rem == k/2 so that its k-rem is also k/2 but if num is like 11 than its 11%2 = 5 that is not equal to its complementry rem which is k - rem = 6 
+                int freq = map.getOrDefault(rem,0);
+                if(freq % 2 != 0) return false;
+            }else{ // rem and k-rem freq should be equal to make pair
+                int freq = map.getOrDefault(rem,0);
+                int complementryFreq = map.getOrDefault(k-rem,0);
+                if(freq != complementryFreq) return false;
+            }
+        }
+
+        return true;
+            
+    }
 }
 
 public class ArrayPairDivisibleByK {
