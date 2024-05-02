@@ -12,15 +12,21 @@ public class Employee {
         this.age = age;
     }
 
-    public int getId(){
+    public int getId() {
         return this.id;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int getAge(){
+    public int getAge() {
         return this.age;
     }
+
+    @Override
+    public String toString() {
+        return name + " " + id + " " + age + "";
+    }
+
 }
